@@ -21,7 +21,7 @@ A little visual example...
 ```
 And this is the result
 
-![alt text](http://www.morellowebdesign.com/public/skroller/Skroller_1.jpg)
+![](http://www.morellowebdesign.com/public/skroller/Skroller_1.jpg)
 
 Easy enough, right?
 
@@ -51,7 +51,7 @@ frameClass | 'skroller' | _Defines a custom class for the scrollable element to 
 
 Here is how it looks...
 
-![](http://www.morellowebdesign.com/public/skroller/Skroller_2.jpg)
+![](http://www.morellowebdesign.com/public/skroller/Skroller_3.jpg)
 
 And the code...
 
