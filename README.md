@@ -69,6 +69,28 @@ $('#myDiv').skroller({
 });
 ```
 
+Another example...
+
+![](http://www.morellowebdesign.com/public/skroller/Skroller_2.jpg)
+
+And how to achieve it...
+
+```
+<script>
+$('#myDiv').skroller({
+	height : 230,
+	barWidth : 10,
+	barColor : '#77c61b',
+	barOpacity : 0.6,
+	barMinHeight : 40,
+	railOff : true,
+	style : 'round',
+	railPadding : 0
+});
+</script>
+```
+
+
 That's it, very simple.
 
 A note...
