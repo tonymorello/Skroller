@@ -108,7 +108,7 @@
 					'position'	: 'absolute',
 					'top'		: 0,
 					'left'		: 0,
-					'right'		: railPadding
+					'width'		: '-='+railPadding
 				});
 				
 			}
@@ -122,7 +122,9 @@
 				frame = $('#'+frameId);
 				// style frame
 				frame.css({
+					'display'		: 'inline-block',
 					'height' 		: height,
+					'width'			: targetW,
 					'overflow' 		: 'hidden',
 					'position'		: 'relative'
 				});
@@ -135,7 +137,10 @@
 				frame.append('<div class="sk_rail"></div>');
 				// set shortcut handle to rail
 				rail = $('#'+frameId+' .sk_rail');
-				// style rail 
+				// style rail
+				
+				var railOpacity = (railOff) ? 0 : railOpacity;
+				
 				rail.css({
 					'display'			: 'inline-block',
 					'position'			: 'absolute',
@@ -147,6 +152,7 @@
 					'border-radius'		: borderRadius,
 					'opacity'			: railOpacity
 				});
+				
 			}
 			
 			// 4. SCROLL BAR
