@@ -49,7 +49,7 @@ railPadding | `=barWidth+5` | _The distance between the content and the scrollba
 style | 'smooth' | _Can be 'round', 'smooth', 'square' or a numeric value that defines the roundness of the scrollbar corners_
 frameClass | 'skroller' | _Defines a custom class for the scrollable element to offer more customization options_
 
-Here is the hands-on...
+Here is how it looks...
 
 ![](http://www.morellowebdesign.com/public/skroller/Skroller_2.jpg)
 
@@ -61,10 +61,10 @@ $('#myDiv').skroller({
 	barWidth : 10,
 	barColor : '#db0456',
 	barOpacity : 0.8,
-	barMinHeight : 15,
-	barHide : true,
+	barMinHeight : 40,
 	barHideDelay : 1,
-	railOff : true,
+	railColor : '#000',
+	railOpacity : 0.3,
 	style : 'round'
 });
 ```
