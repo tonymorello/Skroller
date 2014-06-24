@@ -27,6 +27,7 @@
 			var style			= options.style				|| 'smooth'; // round, smooth, square, numeric value
 			var frameClass		= options.frameClass		|| 'skroller';
 			
+			if(options.railPadding===0) railPadding = 0;
 			
 			var target		= $(element);
 			var targetH 	= $(element).height();
@@ -40,6 +41,8 @@
 				bar_height,
 				borderRadius,
 				speed;
+			
+			
 			
 			// convert delay to milliseconds
 			var delay = barHideDelay*1000;
@@ -107,9 +110,10 @@
 				target.css({
 					'position'	: 'absolute',
 					'top'		: 0,
-					'left'		: 0,
-					'width'		: '-='+railPadding
+					'left'		: 0
 				});
+				
+				target.css('padding-right', railPadding)
 				
 			}
 			
@@ -139,7 +143,7 @@
 				rail = $('#'+frameId+' .sk_rail');
 				// style rail
 				
-				var railOpacity = (railOff) ? 0 : railOpacity;
+				railOpacity = (railOff==true) ? 0 : railOpacity;
 				
 				rail.css({
 					'display'			: 'inline-block',
@@ -148,7 +152,7 @@
 					'right'				: 0,
 					'bottom'			: 0,
 					'width'				: barWidth,
-					'background-color'	: barColor,
+					'background-color'	: railColor,
 					'border-radius'		: borderRadius,
 					'opacity'			: railOpacity
 				});
