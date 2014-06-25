@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>Skroller | A jQuery scrolling plugin</title>
+<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+<script src="../jquery.skroller.js" type="text/javascript"></script>
+<style>
+#page {
+	margin: auto;
+	width: 800px;
+}
+hr{
+	border-bottom-width: medium;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: dashed;
+	border-left-style: none;
+	border-bottom-color: #CCC;
+	margin-bottom: 30px;
+}
+.scrollContainer{
+	display: inline-block;
+	padding: 10px;
+	border: thin solid #CCC;
+}
+pre{
+	background-color: #F3F3F3;
+	display: block;
+	padding: 15px;
+	border: thin dashed #CCC;
+}
+code{
+	color: #666;
+}
+</style>
+</head>
+
+<body>
+<a href="https://github.com/tonymorello/Skroller"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+<div id="page">
+<h1>Skroller.js</h1>
+<hr />
+<p>Skroller.js is a jQuery plugin that transforms elements such as div's into scrollable areas with customizable scrollbars that are consistent across different browsers</p>
+<h2>How it works</h2>
+<p>Simple, just call <code>skroller()</code> method on the jQuery selector and you are pretty much done... Relatively straightforward right?<br />
+A little visual example...</p>
+<div class="scrollContainer">
+    <div id="SkrollThis" style="width:450px;" align="justify">
+    <img src="milo.jpg" width="200" style="float:left; margin:5px;"/>
+    Furtum certe punit lex tua, domine, et lex scripta in cordibus hominum, quam ne ipsa quidem delet iniquitas: quis enim fur aequo animo furem patitur? nec copiosus adactum inopia. et ego furtum facere volui, et feci, nulla conpulsus egestate, nisi penuria et fastidio iustitiae et sagina iniquitatis. nam id furatus sum, quod mihi abundabat et multa melius; nec ea re volebam frui, quam furto appetebam, sed ipso furto et peccato. arbor erat pirus in vicinia nostrae vineae, pomis onusta, nec forma nec sapore inlecebrosis. ad hanc excutiendam atque asportandam nequissimi adulescentuli perreximus nocte intempesta, quousque ludum de pestilentiae more in areis produxeramus, et abstulimus inde onera ingentia non ad nostras epulas, sed vel proicienda porcis, etiamsi aliquid inde comedimus, dum tamen fieret a nobis quod eo liberet, quo non liceret. ecce cor meum, deus, ecce cor meum, quod miseratus es in imo abyssi. dicat tibi nunc ecce cor meum, quid ibi quaerebat, ut essem gratis malus et malitiae meae causa nulla esset nisi malitia. foeda erat, et amavi eam; amavi perire, amavi defectum meum, non illud, ad quod deficiebam, sed defectum meum ipsum amavi, turpis anima et dissiliens a firmamento tuo in exterminium, non dedecore aliquid, sed dedecus appetens.
+    </div>
+</div>
+<script>
+	$('#SkrollThis').skroller();
+</script>
+<pre>
+&lt;script&gt;
+    $('#SkrollThis').skroller();
+&lt;script&gt;
+</pre>
+
+<p>Easy enough, right?</p>
+
+<h2><br />
+  Now some eye candy!</h2>
+<p>Skroller has a few options that can be passed when the method is called here is a list with their defaults</p>
+<table cellpadding="5">
+  <thead>
+    <tr>
+      <th align="left"><h3>Option</h3></th>
+      <th align="left"><h3>Default</h3></th>
+      <th align="left"><h3>Description</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="150"><strong>height</strong></td>
+      <td width="150"><code>200</code></td>
+      <td><em>Defines the fixed height of the rendered scrollable element in pixels</em></td>
+    </tr>
+    <tr>
+      <td><strong>maxHeight</strong></td>
+      <td><code>false</code></td>
+      <td><em>If set to a number will wrap the scrollable element around the target and expand untill the height in pixel is reached then start scrolling</em></td>
+    </tr>
+    <tr>
+      <td><strong>barWidth</strong></td>
+      <td><code>10</code></td>
+      <td><em>The scrollbar width in pixel</em></td>
+    </tr>
+    <tr>
+      <td><strong>barColor</strong></td>
+      <td><code>#2C96DE</code></td>
+      <td><em>The color of the scrollbar</em></td>
+    </tr>
+    <tr>
+      <td><strong>barOpacity</strong></td>
+      <td><code>1</code></td>
+      <td><em>The bar opacity from 0 to 1</em></td>
+    </tr>
+    <tr>
+      <td><strong>barMinHeight</strong></td>
+      <td><code>20</code></td>
+      <td><em>The minimum height of the scrollbar</em></td>
+    </tr>
+    <tr>
+      <td><strong>barHide</strong></td>
+      <td><code>false</code></td>
+      <td><em>Setting this to true will hide the bar and show it when the mouse is over the scrollable element</em></td>
+    </tr>
+    <tr>
+      <td><strong>barHideDelay</strong></td>
+      <td><code>0.5</code></td>
+      <td><em>Value in seconds before the scrollbar fades away when the mouse leaves the scrollable element</em></td>
+    </tr>
+    <tr>
+      <td><strong>railOff</strong></td>
+      <td><code>false</code></td>
+      <td><em>Setting this to true will NOT render the rail, just the scrollbar</em></td>
+    </tr>
+    <tr>
+      <td><strong>railHide</strong></td>
+      <td><code>=barHide</code></td>
+      <td><em>Inherit the value of barHide but can be changed to customize the rail behavior separately</em></td>
+    </tr>
+    <tr>
+      <td><strong>railColor</strong></td>
+      <td><code>=barColor</code></td>
+      <td><em>Set custom color for the rail</em></td>
+    </tr>
+    <tr>
+      <td><strong>railOpacity</strong></td>
+      <td><code>=barOpacity/5</code></td>
+      <td><em>Customize the rail opacity from 0 to 1</em></td>
+    </tr>
+    <tr>
+      <td><strong>railPadding</strong></td>
+      <td><code>=barWidth+10</code></td>
+      <td><em>The distance between the content and the scrollbar</em></td>
+    </tr>
+    <tr>
+      <td><strong>style</strong></td>
+      <td><code>'smooth'</code></td>
+      <td><em>Can be 'round', 'smooth', 'square' or a numeric value that defines the roundness of the scrollbar corners</em></td>
+    </tr>
+    <tr>
+      <td><strong>frameClass</strong></td>
+      <td><code>'skroller'</code></td>
+      <td><em>Defines a custom class for the scrollable element to offer more customization options</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>&nbsp;</p>
+<div class="scrollContainer">
+    <div id="SkrollThis2" style="width:450px;" align="justify">
+    <img src="milo.jpg" width="200" style="float:left; margin:5px;"/>
+    Furtum certe punit lex tua, domine, et lex scripta in cordibus hominum, quam ne ipsa quidem delet iniquitas: quis enim fur aequo animo furem patitur? nec copiosus adactum inopia. et ego furtum facere volui, et feci, nulla conpulsus egestate, nisi penuria et fastidio iustitiae et sagina iniquitatis. nam id furatus sum, quod mihi abundabat et multa melius; nec ea re volebam frui, quam furto appetebam, sed ipso furto et peccato. arbor erat pirus in vicinia nostrae vineae, pomis onusta, nec forma nec sapore inlecebrosis. ad hanc excutiendam atque asportandam nequissimi adulescentuli perreximus nocte intempesta, quousque ludum de pestilentiae more in areis produxeramus, et abstulimus inde onera ingentia non ad nostras epulas, sed vel proicienda porcis, etiamsi aliquid inde comedimus, dum tamen fieret a nobis quod eo liberet, quo non liceret. ecce cor meum, deus, ecce cor meum, quod miseratus es in imo abyssi. dicat tibi nunc ecce cor meum, quid ibi quaerebat, ut essem gratis malus et malitiae meae causa nulla esset nisi malitia. foeda erat, et amavi eam; amavi perire, amavi defectum meum, non illud, ad quod deficiebam, sed defectum meum ipsum amavi, turpis anima et dissiliens a firmamento tuo in exterminium, non dedecore aliquid, sed dedecus appetens.
+    </div>
+</div>
+<script>
+	$('#SkrollThis2').skroller({
+		height : 300,
+		barWidth : 30,
+		barOpacity : 0.6,
+		barMinHeight : 10,
+		barColor : '#F90'
+	});
+</script>
+<pre>
+&lt;script&gt;
+    $('#SkrollThis2').skroller({
+		height : 300,
+		barWidth : 30,
+		barOpacity : 0.6,
+		barMinHeight : 10,
+		barColor : '#F90'
+	});
+&lt;script&gt;
+</pre>
+<p>&nbsp;</p>
+<p>The coolest part? You can use it on anything! Even images... and make them scrollable! Hoohoo!</p>
+<img id="milo" src="milo.jpg" />
+<script>
+	$('#milo').skroller({
+		height : 300,
+		barOpacity : 0.5,
+		barColor : '#FFF',
+		railPadding : 0,
+		style : 'square'
+	});
+</script>
+<pre>
+&lt;img id="milo" src="milo.jpg" /&gt;
+&lt;script&gt;
+    $('#milo').skroller({
+		height : 300,
+		barOpacity : 0.5,
+		barColor : '#FFF',
+		railPadding : 0,
+		style : 'square'
+	});
+&lt;script&gt;
+</pre>
+<p>&nbsp;</p>
+<h2>A note...</h2>
+<p>Skroller is still a work-in-progress so there might be bugs, compatibility issues and it might pose a treath to your pets... I mainly developed it for personal use on my projects but I like sharing (because it's caring) and I will try and keep it updated... feel free to fork it of course and report any issues you may find.</p>
+<p>Also forgive me if my code is not clean / canonical / rational / standardized etc... (you get the point) I am a web designer, self-taught web developer who likes to hack code, so you've been warned! :)</p>
+<p>&nbsp;</p>
+</div>
+
+</body>
+</html>

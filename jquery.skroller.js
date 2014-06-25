@@ -23,7 +23,7 @@
 			var railHide		= options.railHide			|| barHide;
 			var railColor		= options.railColor			|| barColor;
 			var railOpacity		= options.railOpacity		|| barOpacity/5;
-			var railPadding		= options.railPadding		|| barWidth+5;
+			var railPadding		= options.railPadding		|| barWidth+10;
 			var style			= options.style				|| 'smooth'; // round, smooth, square, numeric value
 			var frameClass		= options.frameClass		|| 'skroller';
 			
@@ -113,7 +113,7 @@
 					'left'		: 0
 				});
 				
-				target.css('padding-right', railPadding)
+				target.css('width', '-='+railPadding)
 				
 			}
 			
