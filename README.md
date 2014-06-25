@@ -93,6 +93,10 @@ $('#myDiv').skroller({
 
 That's it, very simple.
 
+Demo
+----
+Here is a working **[DEMO](http://www.morellowebdesign.com/samples/skroller/)**
+
 A note...
 ---------
 
