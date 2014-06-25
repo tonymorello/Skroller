@@ -205,7 +205,7 @@
 					e.preventDefault();
 					
 					// determine pointer starting position
-					var startY = e.clientY;
+					var startY = e.pageY;
 					// determine scroll bar starting position
 					var barOffset = parseInt(scrollbar.css('top'));
 					
@@ -217,7 +217,7 @@
 						mouse_state = 'down';
 						
 						// update pointer position
-						var currentY = e.clientY + barOffset;
+						var currentY = e.pageY + barOffset;
 						// update scroll bar position
 						var position = currentY - startY;
 						// stop scroll bar at the end of the rail
@@ -377,10 +377,12 @@
 				
 				rail.on('click', function(e){
 					
-					var railOffset = $(this).offset();
+					var railOffset = rail.offset();
 					
-					// update pointer position11111
-					var currentY = e.clientY - railOffset.top;
+					
+					
+					// update pointer position
+					var currentY = e.pageY - railOffset.top;
 					// update scroll bar position
 					var position = currentY - (bar_height/2);
 					// stop scroll bar at the end of the rail
@@ -395,7 +397,7 @@
 					scrollbar.css('top', position);
 					// move target
 					target.css('top', target_position);
-										
+					
 				});
 				
 			}
