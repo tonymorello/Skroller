@@ -40,7 +40,8 @@
 				scrollbar,
 				bar_height,
 				borderRadius,
-				speed;
+				speed,
+				adjustedWidth;
 			
 			
 			
@@ -115,6 +116,8 @@
 				
 				target.css('width', '-='+railPadding)
 				
+				targetH 	= target.height();
+				offset		= targetH - height;
 			}
 			
 			// 2. FRAME
@@ -161,6 +164,7 @@
 			
 			// 4. SCROLL BAR
 			function buildScrollbar(){
+				
 				
 				// attach scrollbar to frame
 				frame.append('<div class="scrollbar"></div>');
@@ -256,6 +260,8 @@
 			function detectContentChange(){
 				
 				frame.on('mousemove', function(e){
+					
+					
 					// get current target element total height
 					targetH = target.height();
 					// get current offset value
@@ -283,6 +289,8 @@
 						if(speed<1) speed = 1;
 						
 					}
+					
+					
 				});
 				
 			}

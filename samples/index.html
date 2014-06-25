@@ -5,6 +5,29 @@
 <title>Skroller | A jQuery scrolling plugin</title>
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
 <script src="../jquery.skroller.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(e) {
+    
+	$('#SkrollThis').skroller();
+	
+	$('#SkrollThis2').skroller({
+		height : 300,
+		barWidth : 30,
+		barOpacity : 0.6,
+		barMinHeight : 10,
+		barColor : '#F90'
+	});
+	
+	$('#milo').skroller({
+		height : 300,
+		barOpacity : 0.5,
+		barColor : '#FFF',
+		railPadding : 0,
+		style : 'square'
+	});
+	
+});
+</script>
 <style>
 #page {
 	margin: auto;
@@ -53,13 +76,9 @@ A little visual example...</p>
     Furtum certe punit lex tua, domine, et lex scripta in cordibus hominum, quam ne ipsa quidem delet iniquitas: quis enim fur aequo animo furem patitur? nec copiosus adactum inopia. et ego furtum facere volui, et feci, nulla conpulsus egestate, nisi penuria et fastidio iustitiae et sagina iniquitatis. nam id furatus sum, quod mihi abundabat et multa melius; nec ea re volebam frui, quam furto appetebam, sed ipso furto et peccato. arbor erat pirus in vicinia nostrae vineae, pomis onusta, nec forma nec sapore inlecebrosis. ad hanc excutiendam atque asportandam nequissimi adulescentuli perreximus nocte intempesta, quousque ludum de pestilentiae more in areis produxeramus, et abstulimus inde onera ingentia non ad nostras epulas, sed vel proicienda porcis, etiamsi aliquid inde comedimus, dum tamen fieret a nobis quod eo liberet, quo non liceret. ecce cor meum, deus, ecce cor meum, quod miseratus es in imo abyssi. dicat tibi nunc ecce cor meum, quid ibi quaerebat, ut essem gratis malus et malitiae meae causa nulla esset nisi malitia. foeda erat, et amavi eam; amavi perire, amavi defectum meum, non illud, ad quod deficiebam, sed defectum meum ipsum amavi, turpis anima et dissiliens a firmamento tuo in exterminium, non dedecore aliquid, sed dedecus appetens.
     </div>
 </div>
-<script>
-	$('#SkrollThis').skroller();
-</script>
+
 <pre>
-&lt;script&gt;
-    $('#SkrollThis').skroller();
-&lt;script&gt;
+$('#SkrollThis').skroller();
 </pre>
 
 <p>Easy enough, right?</p>
@@ -161,49 +180,31 @@ A little visual example...</p>
     Furtum certe punit lex tua, domine, et lex scripta in cordibus hominum, quam ne ipsa quidem delet iniquitas: quis enim fur aequo animo furem patitur? nec copiosus adactum inopia. et ego furtum facere volui, et feci, nulla conpulsus egestate, nisi penuria et fastidio iustitiae et sagina iniquitatis. nam id furatus sum, quod mihi abundabat et multa melius; nec ea re volebam frui, quam furto appetebam, sed ipso furto et peccato. arbor erat pirus in vicinia nostrae vineae, pomis onusta, nec forma nec sapore inlecebrosis. ad hanc excutiendam atque asportandam nequissimi adulescentuli perreximus nocte intempesta, quousque ludum de pestilentiae more in areis produxeramus, et abstulimus inde onera ingentia non ad nostras epulas, sed vel proicienda porcis, etiamsi aliquid inde comedimus, dum tamen fieret a nobis quod eo liberet, quo non liceret. ecce cor meum, deus, ecce cor meum, quod miseratus es in imo abyssi. dicat tibi nunc ecce cor meum, quid ibi quaerebat, ut essem gratis malus et malitiae meae causa nulla esset nisi malitia. foeda erat, et amavi eam; amavi perire, amavi defectum meum, non illud, ad quod deficiebam, sed defectum meum ipsum amavi, turpis anima et dissiliens a firmamento tuo in exterminium, non dedecore aliquid, sed dedecus appetens.
     </div>
 </div>
-<script>
-	$('#SkrollThis2').skroller({
-		height : 300,
-		barWidth : 30,
-		barOpacity : 0.6,
-		barMinHeight : 10,
-		barColor : '#F90'
-	});
-</script>
+
 <pre>
-&lt;script&gt;
-    $('#SkrollThis2').skroller({
-		height : 300,
-		barWidth : 30,
-		barOpacity : 0.6,
-		barMinHeight : 10,
-		barColor : '#F90'
-	});
-&lt;script&gt;
+$('#SkrollThis2').skroller({
+    height : 300,
+    barWidth : 30,
+    barOpacity : 0.6,
+    barMinHeight : 10,
+    barColor : '#F90'
+});
 </pre>
 <p>&nbsp;</p>
 <p>The coolest part? You can use it on anything! Even images... and make them scrollable! Hoohoo!</p>
 <img id="milo" src="milo.jpg" />
-<script>
-	$('#milo').skroller({
-		height : 300,
-		barOpacity : 0.5,
-		barColor : '#FFF',
-		railPadding : 0,
-		style : 'square'
-	});
-</script>
+
 <pre>
 &lt;img id="milo" src="milo.jpg" /&gt;
-&lt;script&gt;
-    $('#milo').skroller({
-		height : 300,
-		barOpacity : 0.5,
-		barColor : '#FFF',
-		railPadding : 0,
-		style : 'square'
-	});
-&lt;script&gt;
+
+$('#milo').skroller({
+    height : 300,
+    barOpacity : 0.5,
+    barColor : '#FFF',
+    railPadding : 0,
+    style : 'square'
+});
+
 </pre>
 <p>&nbsp;</p>
 <h2>A note...</h2>
