@@ -34,12 +34,13 @@
 			if(options.padding===0) padding = 0;
 			
 			var target		= $(element);
-			var targetH 	= $(element).height();
-			var targetW 	= $(element).width();
+			
 			var targetId	= $(element).attr('id') || randomId();
 			var frameId		= 'sk_'+targetId;
 			
-			var frame,
+			var targetH,
+				targetW,
+				frame,
 				rail,
 				scrollbar,
 				bar_height,
@@ -48,43 +49,47 @@
 				adjustedWidth,
 				offset;
 			
+			$(window).load(function(e){
+				
+				targetH = $(element).height();
+				targetW = $(element).width();
+				
+				// convert delay to milliseconds
+				var delay = barHideDelay*1000;
+				
+				// determine if maxHeight option is set
+				if(maxHeight){
+					if(targetH<=maxHeight) height = targetH;
+				}
+				
+				// Set the mouse state to 'up' for future use
+				var mouse_state = 'up';
+				
+				var has_scrollbar = false;
+				
+				// determine scrollbar style
+				switch(style) {
+					case 'square':
+						borderRadius = 0;
+						break;
+					case 'round':
+						borderRadius = barWidth/2;
+						break;
+					case 'smooth':
+						borderRadius = (barWidth/2)/2;
+						break;
+					default:
+						borderRadius = style;
+						break;
+				}
+				
+				initialize();
+				
+				createStructure();
+				
+				detectContentChange();
 			
-			// convert delay to milliseconds
-			var delay = barHideDelay*1000;
-			
-			// determine if maxHeight option is set
-			if(maxHeight){
-				if(targetH<=maxHeight) height = targetH;
-			}
-			
-			// Set the mouse state to 'up' for future use
-			var mouse_state = 'up';
-			
-			var has_scrollbar = false;
-			
-			// determine scrollbar style
-			switch(style) {
-				case 'square':
-					borderRadius = 0;
-					break;
-				case 'round':
-					borderRadius = barWidth/2;
-					break;
-				case 'smooth':
-					borderRadius = (barWidth/2)/2;
-					break;
-				default:
-					borderRadius = style;
-					break;
-			}
-			
-			initialize();
-			
-			createStructure();
-			
-			detectContentChange();
-			
-			
+			});
 			
 			////////////////////////////////////////// FUNCTIONS
 			
