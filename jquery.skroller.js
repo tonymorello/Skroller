@@ -17,17 +17,20 @@
 			var barColor		= options.barColor			|| '#2C96DE';
 			var barOpacity		= options.barOpacity		|| 1;
 			var barMinHeight	= options.barMinHeight		|| 20;
+			var barMaxHeight	= options.barMaxHeight		|| height;
 			var barHide			= options.barHide			|| false;
 			var barHideDelay	= options.barHideDelay		|| 0.5; // in seconds
 			var railOff			= options.railOff			|| false;
 			var railHide		= options.railHide			|| barHide;
 			var railColor		= options.railColor			|| barColor;
 			var railOpacity		= options.railOpacity		|| barOpacity/5;
-			var railPadding		= options.railPadding		|| barWidth+10;
+			var indent			= options.indent			|| barWidth+(barWidth/2);
+			var padding			= options.padding			|| 10;
 			var style			= options.style				|| 'smooth'; // round, smooth, square, numeric value
 			var frameClass		= options.frameClass		|| 'skroller';
 			
-			if(options.railPadding===0) railPadding = 0;
+			if(options.indent===0) indent = 0;
+			if(options.padding===0) padding = 0;
 			
 			var target		= $(element);
 			var targetH 	= $(element).height();
@@ -41,8 +44,8 @@
 				bar_height,
 				borderRadius,
 				speed,
-				adjustedWidth;
-			
+				adjustedWidth,
+				offset;
 			
 			
 			// convert delay to milliseconds
@@ -53,8 +56,6 @@
 				if(targetH<=maxHeight) height = targetH;
 			}
 			
-			// Calculate how much of the target element will overflow
-			var offset		= targetH - height;
 			// Set the mouse state to 'up' for future use
 			var mouse_state = 'up';
 			
@@ -78,12 +79,11 @@
 			
 			initialize();
 			
-			buildFrame();
-			
 			createStructure();
 			
 			detectContentChange();
 			
+						
 			
 			////////////////////////////////////////// FUNCTIONS
 			
@@ -93,6 +93,7 @@
 				// determine whether the content needs a scrollbar
 				if(targetH>height){
 					has_scrollbar = true;
+					buildFrame();
 					buildRail();
 					buildScrollbar();
 					calculateSpeed();
@@ -109,15 +110,20 @@
 				
 				// format target element to fit the script requirements
 				target.css({
-					'position'	: 'absolute',
-					'top'		: 0,
-					'left'		: 0
+					'position'		: 'absolute',
+					'top'			: 0,
+					'left'			: 0,
+					'width'			: targetW-(padding*2),
 				});
 				
-				target.css('width', '-='+railPadding)
+				target.css('width', '-='+indent);
 				
 				targetH 	= target.height();
-				offset		= targetH - height;
+				
+				// Calculate how much of the target element will overflow
+				offset		= (targetH - height) + (padding*2);
+				
+				
 			}
 			
 			// 2. FRAME
@@ -136,6 +142,21 @@
 					'position'		: 'relative'
 				});
 				
+				// wrap target padding mask
+				$(element).wrap('<div class="sk_mask"></div>');
+				// set shortcut handle to mask
+				mask = $('#'+frameId+' .sk_mask');
+				
+				mask.css({
+					'position'	: 'absolute',
+					'display'	: 'inline-block',
+					'top' 		: padding,
+					'bottom'	: padding,
+					'right' 	: padding,
+					'left'		: padding,
+					'overflow'	: 'hidden'
+				});
+				
 			}
 			
 			// 3. RAIL
@@ -151,9 +172,9 @@
 				rail.css({
 					'display'			: 'inline-block',
 					'position'			: 'absolute',
-					'top'				: 0,
-					'right'				: 0,
-					'bottom'			: 0,
+					'top'				: padding,
+					'right'				: padding,
+					'bottom'			: padding,
 					'width'				: barWidth,
 					'background-color'	: railColor,
 					'border-radius'		: borderRadius,
@@ -164,7 +185,6 @@
 			
 			// 4. SCROLL BAR
 			function buildScrollbar(){
-				
 				
 				// attach scrollbar to frame
 				frame.append('<div class="scrollbar"></div>');
@@ -178,8 +198,8 @@
 				scrollbar.css({
 					'display' 			: 'inline-block',
 					'position' 			: 'absolute',
-					'top'				: 0,
-					'right'				: 0,
+					'top'				: padding,
+					'right'				: padding,
 					'height'			: bar_height,
 					'width'				: barWidth,
 					'background-color'	: barColor,
@@ -194,7 +214,7 @@
 			function calculateSpeed(){
 				
 				// adjust scrolling speed factor to match rail length
-				speed = offset/(height-barMinHeight);
+				speed = offset / (height - (padding*2) - bar_height);
 				// set minimum speed to 1
 				if(speed<1) speed = 1;
 				
@@ -225,20 +245,19 @@
 						// update scroll bar position
 						var position = currentY - startY;
 						// stop scroll bar at the end of the rail
-						if(position >= (height-bar_height)) position = height-bar_height;
+						if(position >= (height-bar_height-padding)) position = height-bar_height-padding;
 						// stop the scrollbar at the beginning of the rail
-						if(position <= 0) position = 0;
-						
-						//if(position >= offset) position = offset; // might be not needed... lol... fried brain
-						
+						if(position <= padding) position = padding;
+												
 						// determine target element absolute position
-						var target_position = 0-(position*speed);
+						var target_position = 0-((position-padding)*speed);
 						
 						// move scrollbar
 						scrollbar.css('top', position);
 						// move target
 						target.css('top', target_position);
-										
+						
+							
 					});
 					
 					// 8. RELEASE MOUSE BUTTON
@@ -261,11 +280,10 @@
 				
 				frame.on('mousemove', function(e){
 					
-					
 					// get current target element total height
 					targetH = target.height();
 					// get current offset value
-					var checkOffset	= targetH - height;
+					var checkOffset	= (targetH - height) + (padding*2);
 					
 					// evaluate if the content changed
 					if(checkOffset != offset){
@@ -284,9 +302,7 @@
 						if(barHide)	scrollbar.css('height', bar_height);
 						else scrollbar.animate({'height': bar_height}, 'fast');
 						// adjust scrolling speed factor to match rail length to new offset
-						speed = offset/(height-barMinHeight);
-						// set minimum speed to 1
-						if(speed<1) speed = 1;
+						calculateSpeed();
 						
 					}
 					
@@ -350,18 +366,25 @@
 					
 					var normalized = e.deltaY / minDeltaY;
 					
+					if(normalized<0) normalized = 0-(3*speed);
+					if(normalized>0) normalized = 3*speed;
+					
 					var currentTargetPosition = parseInt(target.css('top'));
 					var calculateFuturePosition = currentTargetPosition - normalized;
-					var maxNormalizedValue = offset + currentTargetPosition;
-										
-					if(normalized>maxNormalizedValue) normalized=maxNormalizedValue;
-					if(normalized<currentTargetPosition) normalized=maxNormalizedValue;
+					
+					
+					if(calculateFuturePosition>0) normalized = -1;
+					//else if(normalized-currentTargetPosition>offset) normalized = 1;
+					
+					$('#debug').html(normalized);
 					
 					if(calculateFuturePosition<0-offset) normalized = 0;
 					if(calculateFuturePosition>0) normalized = 0;
-										
+					
+					//alert(offset-padding);
+					
 					target.css('top', '-='+normalized);
-					var scrollbarNewPosition = (currentTargetPosition-currentTargetPosition-currentTargetPosition)/speed;
+					var scrollbarNewPosition = ((currentTargetPosition-currentTargetPosition-currentTargetPosition)/speed)+padding;
 					
 					scrollbar.css('top', scrollbarNewPosition);
 					
@@ -394,12 +417,12 @@
 					// update scroll bar position
 					var position = currentY - (bar_height/2);
 					// stop scroll bar at the end of the rail
-					if(position >= (height-bar_height)) position = height-bar_height;
+					if(position >= (height-bar_height-padding)) position = height-bar_height-padding;
 					// stop the scrollbar at the beginning of the rail
-					if(position <= 0) position = 0;
+					if(position <= padding) position = padding;
 					
 					// determine target element absolute position
-					var target_position = 0-(position*speed);
+					var target_position = 0-((position-padding)*speed);
 					
 					// move scrollbar
 					scrollbar.css('top', position);
