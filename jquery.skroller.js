@@ -25,7 +25,7 @@
 			var railColor		= options.railColor			|| barColor;
 			var railOpacity		= options.railOpacity		|| barOpacity/5;
 			var indent			= options.indent			|| barWidth+(barWidth/2);
-			var padding			= options.padding			|| 10;
+			var padding			= options.padding			|| 0;
 			var style			= options.style				|| 'smooth'; // round, smooth, square, numeric value
 			var frameClass		= options.frameClass		|| 'skroller';
 			
@@ -392,9 +392,7 @@
 				
 					if(e.preventDefault) e.preventDefault();
 					e.returnValue = false;
-					
-					$('#debug').html(nextTargetPosition);
-					
+										
 				};
 				
 				element.onmousewheel = function(e) {

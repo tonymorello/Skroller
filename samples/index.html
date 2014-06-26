@@ -16,7 +16,9 @@ $(document).ready(function(e) {
 		barOpacity : 0.8,
 		barMinHeight : 60,
 		barColor : '#F90',
-		style : 'round'
+		style : 'round',
+		padding : 10,
+		frameClass : 'skrollerCustomClass'
 	});
 	
 	$('#milo').skroller({
@@ -35,7 +37,7 @@ $(document).ready(function(e) {
 	width: 800px;
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
-.skroller{
+.skrollerCustomClass{
 	border: thin solid #CCC;	
 }
 hr{
@@ -66,8 +68,7 @@ code{
 </head>
 
 <body>
-<div id="debug"></div>
-<a href="https://github.com/tonymorello/Skroller"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+<a href="https://github.com/tonymorello/Skroller"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
 <div id="page">
 <h1>Skroller.js</h1>
 <hr />
@@ -90,7 +91,7 @@ $('#SkrollThis').skroller();
 <h2><br />
   Now some eye candy!</h2>
 <p>Skroller has a few options that can be passed when the method is called here is a list with their defaults</p>
-<table cellpadding="5">
+<table cellpadding="5" cellspacing="0">
   <thead>
     <tr>
       <th align="left"><h3>Option</h3></th>
@@ -101,87 +102,96 @@ $('#SkrollThis').skroller();
   <tbody>
     <tr>
       <td width="150"><strong>height</strong></td>
-      <td width="150"><code>200</code></td>
+      <td width="150">200</td>
       <td><em>Defines the fixed height of the rendered scrollable element in pixels</em></td>
     </tr>
     <tr>
       <td><strong>maxHeight</strong></td>
-      <td><code>false</code></td>
+      <td>false</td>
       <td><em>If set to a number will wrap the scrollable element around the target and expand untill the height in pixel is reached then start scrolling</em></td>
     </tr>
     <tr>
       <td><strong>barWidth</strong></td>
-      <td><code>10</code></td>
+      <td>10</td>
       <td><em>The scrollbar width in pixel</em></td>
     </tr>
     <tr>
       <td><strong>barColor</strong></td>
-      <td><code>#2C96DE</code></td>
+      <td>#2C96DE</td>
       <td><em>The color of the scrollbar</em></td>
     </tr>
     <tr>
       <td><strong>barOpacity</strong></td>
-      <td><code>1</code></td>
+      <td>1</td>
       <td><em>The bar opacity from 0 to 1</em></td>
     </tr>
     <tr>
       <td><strong>barMinHeight</strong></td>
-      <td><code>20</code></td>
+      <td>20</td>
       <td><em>The minimum height of the scrollbar</em></td>
     </tr>
     <tr>
+      <td><strong>barMaxHeight</strong></td>
+      <td>=height</td>
+      <td><em>The maximum height of the scrollbar</em></td>
+    </tr>
+    <tr>
       <td><strong>barHide</strong></td>
-      <td><code>false</code></td>
+      <td>false</td>
       <td><em>Setting this to true will hide the bar and show it when the mouse is over the scrollable element</em></td>
     </tr>
     <tr>
       <td><strong>barHideDelay</strong></td>
-      <td><code>0.5</code></td>
+      <td>0.5</td>
       <td><em>Value in seconds before the scrollbar fades away when the mouse leaves the scrollable element</em></td>
     </tr>
     <tr>
       <td><strong>railOff</strong></td>
-      <td><code>false</code></td>
+      <td>false</td>
       <td><em>Setting this to true will NOT render the rail, just the scrollbar</em></td>
     </tr>
     <tr>
       <td><strong>railHide</strong></td>
-      <td><code>=barHide</code></td>
+      <td>=barHide</td>
       <td><em>Inherit the value of barHide but can be changed to customize the rail behavior separately</em></td>
     </tr>
     <tr>
       <td><strong>railColor</strong></td>
-      <td><code>=barColor</code></td>
+      <td>=barColor</td>
       <td><em>Set custom color for the rail</em></td>
     </tr>
     <tr>
       <td><strong>railOpacity</strong></td>
-      <td><code>=barOpacity/5</code></td>
+      <td>=barOpacity/5</td>
       <td><em>Customize the rail opacity from 0 to 1</em></td>
     </tr>
     <tr>
       <td><strong>indent</strong></td>
-      <td><code>=barWidth+10</code></td>
+      <td>=barWidth+(barWidth/2)</td>
       <td><em>The distance between the content and the scrollbar</em></td>
     </tr>
     <tr>
+      <td><strong>padding</strong></td>
+      <td>0</td>
+      <td><em>the distance between the content and the frame</em></td>
+    </tr>
+    <tr>
       <td><strong>style</strong></td>
-      <td><code>'smooth'</code></td>
+      <td>'smooth'</td>
       <td><em>Can be 'round', 'smooth', 'square' or a numeric value that defines the roundness of the scrollbar corners</em></td>
     </tr>
     <tr>
       <td><strong>frameClass</strong></td>
-      <td><code>'skroller'</code></td>
+      <td>'skroller'</td>
       <td><em>Defines a custom class for the scrollable element to offer more customization options</em></td>
     </tr>
   </tbody>
 </table>
-
 <p>&nbsp;</p>
 
 <div id="SkrollThis2" style="width:450px;" align="justify">
-<img src="milo.jpg" width="200" style="float:left; margin:5px;"/>
-Furtum certe punit lex tua, domine, et lex scripta in cordibus hominum, quam ne ipsa quidem delet iniquitas: quis enim fur aequo animo furem patitur? nec copiosus adactum inopia. et ego furtum facere volui, et feci, nulla conpulsus egestate, nisi penuria et fastidio iustitiae et sagina iniquitatis. nam id furatus sum, quod mihi abundabat et multa melius; nec ea re volebam frui, quam furto appetebam, sed ipso furto et peccato. arbor erat pirus in vicinia nostrae vineae, pomis onusta, nec forma nec sapore inlecebrosis. ad hanc excutiendam atque asportandam nequissimi adulescentuli perreximus nocte intempesta, quousque ludum de pestilentiae more in areis produxeramus, et abstulimus inde onera ingentia non ad nostras epulas, sed vel proicienda porcis, etiamsi aliquid inde comedimus, dum tamen fieret a nobis quod eo liberet, quo non liceret. ecce cor meum, deus, ecce cor meum, quod miseratus es in imo abyssi. dicat tibi nunc ecce cor meum, quid ibi quaerebat, ut essem gratis malus et malitiae meae causa nulla esset nisi malitia. foeda erat, et amavi eam; amavi perire, amavi defectum meum, non illud, ad quod deficiebam, sed defectum meum ipsum amavi, turpis anima et dissiliens a firmamento tuo in exterminium, non dedecore aliquid, sed dedecus appetens.
+  <img src="milo.jpg" width="200" style="float:left; margin:5px;"/>
+  Furtum certe punit lex tua, domine, et lex scripta in cordibus hominum, quam ne ipsa quidem delet iniquitas: quis enim fur aequo animo furem patitur? nec copiosus adactum inopia. et ego furtum facere volui, et feci, nulla conpulsus egestate, nisi penuria et fastidio iustitiae et sagina iniquitatis. nam id furatus sum, quod mihi abundabat et multa melius; nec ea re volebam frui, quam furto appetebam, sed ipso furto et peccato. arbor erat pirus in vicinia nostrae vineae, pomis onusta, nec forma nec sapore inlecebrosis. ad hanc excutiendam atque asportandam nequissimi adulescentuli perreximus nocte intempesta, quousque ludum de pestilentiae more in areis produxeramus, et abstulimus inde onera ingentia non ad nostras epulas, sed vel proicienda porcis, etiamsi aliquid inde comedimus, dum tamen fieret a nobis quod eo liberet, quo non liceret. ecce cor meum, deus, ecce cor meum, quod miseratus es in imo abyssi. dicat tibi nunc ecce cor meum, quid ibi quaerebat, ut essem gratis malus et malitiae meae causa nulla esset nisi malitia. foeda erat, et amavi eam; amavi perire, amavi defectum meum, non illud, ad quod deficiebam, sed defectum meum ipsum amavi, turpis anima et dissiliens a firmamento tuo in exterminium, non dedecore aliquid, sed dedecus appetens.
 </div>
 
 <pre>
@@ -191,7 +201,9 @@ $('#SkrollThis2').skroller({
     barOpacity : 0.8,
     barMinHeight : 60,
     barColor : '#F90',
-    style : 'round'
+    style : 'round',
+    padding : 10,
+    frameClass : 'skrollerCustomClass'
 });
 </pre>
 <p>&nbsp;</p>
