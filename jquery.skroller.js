@@ -366,26 +366,25 @@
 					
 					var normalized = e.deltaY / minDeltaY;
 					
-					if(normalized<0) normalized = 0-(3*speed);
-					if(normalized>0) normalized = 3*speed;
+					if(normalized<0) normalized = Math.floor(0-(3*speed));
+					if(normalized>0) normalized = Math.floor(3*speed);
 					
 					var currentTargetPosition = parseInt(target.css('top'));
-					var calculateFuturePosition = currentTargetPosition - normalized;
+					var nextTargetPosition = currentTargetPosition - normalized
+					var scrollbarNewPosition = ((nextTargetPosition-(nextTargetPosition*2))/speed)+padding;
+					
+					// stop target at the top
+					if(nextTargetPosition>0) nextTargetPosition=0;
+					// stop target at the bottom
+					if(Math.abs(nextTargetPosition)>offset) nextTargetPosition=0-offset;
 					
 					
-					if(calculateFuturePosition>0) normalized = -1;
-					//else if(normalized-currentTargetPosition>offset) normalized = 1;
+					// stop scrollbar at the top
+					if(scrollbarNewPosition<padding) scrollbarNewPosition = padding;
+					// stop scrollbar at the bottom
+					if(scrollbarNewPosition>(height-padding-bar_height)) scrollbarNewPosition = (height-padding-bar_height);
 					
-					$('#debug').html(normalized);
-					
-					if(calculateFuturePosition<0-offset) normalized = 0;
-					if(calculateFuturePosition>0) normalized = 0;
-					
-					//alert(offset-padding);
-					
-					target.css('top', '-='+normalized);
-					var scrollbarNewPosition = ((currentTargetPosition-currentTargetPosition-currentTargetPosition)/speed)+padding;
-					
+					target.css('top', nextTargetPosition);
 					scrollbar.css('top', scrollbarNewPosition);
 					
 					if(e.stopPropagation) e.stopPropagation();
@@ -393,6 +392,9 @@
 				
 					if(e.preventDefault) e.preventDefault();
 					e.returnValue = false;
+					
+					$('#debug').html(nextTargetPosition);
+					
 				};
 				
 				element.onmousewheel = function(e) {
