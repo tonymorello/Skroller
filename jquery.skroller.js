@@ -28,6 +28,7 @@
 			var padding			= options.padding			|| 0;
 			var style			= options.style				|| 'smooth'; // round, smooth, square, numeric value
 			var frameClass		= options.frameClass		|| 'skroller';
+			var wheelSpeed		= options.wheelSpeed		|| 1;
 			
 			if(options.indent===0) indent = 0;
 			if(options.padding===0) padding = 0;
@@ -83,7 +84,7 @@
 			
 			detectContentChange();
 			
-						
+			
 			
 			////////////////////////////////////////// FUNCTIONS
 			
@@ -366,8 +367,11 @@
 					
 					var normalized = e.deltaY / minDeltaY;
 					
-					if(normalized<0) normalized = Math.floor(0-(3*speed));
-					if(normalized>0) normalized = Math.floor(3*speed);
+					var fontSize = target.css('font-size');
+					var lineHeight = Math.floor(parseInt(fontSize) * 1.5);
+					
+					if(normalized<0) normalized = 0-(lineHeight*wheelSpeed);
+					if(normalized>0) normalized = (lineHeight*wheelSpeed);
 					
 					var currentTargetPosition = parseInt(target.css('top'));
 					var nextTargetPosition = currentTargetPosition - normalized
@@ -409,8 +413,6 @@
 				rail.on('click', function(e){
 					
 					var railOffset = rail.offset();
-					
-					
 					
 					// update pointer position
 					var currentY = e.pageY - railOffset.top;
