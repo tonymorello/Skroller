@@ -50,6 +50,7 @@ indent | `=barWidth+(barWidth/2)` | _The distance between the content and the sc
 padding | 0 | _the distance between the content and the frame_
 style | 'smooth' | _Can be 'round', 'smooth', 'square' or a numeric value that defines the roundness of the scrollbar corners_
 frameClass | 'skroller' | _Defines a custom class for the scrollable element to offer more customization options_
+wheelSpeed | 1 | _the number of lines to be scrolled at one time_
 
 Here is how it looks...
 
