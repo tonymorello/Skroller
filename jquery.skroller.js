@@ -47,7 +47,8 @@
 				borderRadius,
 				speed,
 				adjustedWidth,
-				offset;
+				offset,
+				has_scrollbar;
 			
 			$(window).load(function(e){
 				
@@ -65,7 +66,6 @@
 				// Set the mouse state to 'up' for future use
 				var mouse_state = 'up';
 				
-				var has_scrollbar = false;
 				
 				// determine scrollbar style
 				switch(style) {
@@ -83,11 +83,13 @@
 						break;
 				}
 				
+				buildFrame();
+				
 				initialize();
 				
 				createStructure();
 				
-				detectContentChange();
+				listenForChange();
 			
 			});
 			
@@ -98,8 +100,6 @@
 			function createStructure(){
 				// determine whether the content needs a scrollbar
 				if(targetH>height){
-					has_scrollbar = true;
-					buildFrame();
 					buildRail();
 					buildScrollbar();
 					calculateSpeed();
@@ -128,6 +128,8 @@
 				
 				// Calculate how much of the target element will overflow
 				offset		= (targetH - height) + (padding*2);
+				// Min value for offset is 0
+				if(offset<0) offset = 0;
 				
 				
 			}
@@ -167,6 +169,7 @@
 			
 			// 3. RAIL
 			function buildRail(){
+				var has_scrollbar = true;
 				// attach rail to frame
 				frame.append('<div class="sk_rail"></div>');
 				// set shortcut handle to rail
@@ -282,19 +285,21 @@
 			}
 			
 			// 9. DETECT CONTENT CHANGE
-			function detectContentChange(){
+			function listenForChange(){
 				
-				frame.on('mousemove', function(e){
+				setInterval(function(e){
 					
 					// get current target element total height
 					targetH = target.height();
 					// get current offset value
 					var checkOffset	= (targetH - height) + (padding*2);
+					// Set min value for offset to 0
+					if(checkOffset<0) checkOffset=0;
 					
 					// evaluate if the content changed
 					if(checkOffset != offset){
 						
-						if(has_scrollbar == false){
+						if(!has_scrollbar){
 							createStructure();
 						}
 						
@@ -313,7 +318,7 @@
 					}
 					
 					
-				});
+				}, 500);
 				
 			}
 			

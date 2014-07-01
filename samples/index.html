@@ -29,6 +29,14 @@ $(document).ready(function(e) {
 		style : 'square'
 	});
 	
+	$('#SkrollDynamic').skroller({
+		height : 100
+	});
+	
+	$('#addContent').click(function(e){
+		$('#SkrollDynamic').append('<br />and some more content...');
+	});
+	
 });
 </script>
 <style>
@@ -227,6 +235,16 @@ $('#milo').skroller({
 });
 
 </pre>
+<p>&nbsp;</p>
+<h2>Need to scroll dynamic content? No problem...</h2>
+
+<div id="SkrollDynamic" style="width:300px;" align="justify" >
+	This is some content...
+</div>
+
+<p>
+  <input type="submit" name="addContent" id="addContent" value="Add some more..." />
+</p>
 <p>&nbsp;</p>
 <h2>A note...</h2>
 <p>Skroller is still a work-in-progress so there might be bugs, compatibility issues and it might pose a treath to your pets... I mainly developed it for personal use on my projects but I like sharing (because it's caring) and I will try and keep it updated... feel free to fork it of course and report any issues you may find.</p>
