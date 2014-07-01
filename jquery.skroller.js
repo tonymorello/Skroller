@@ -301,7 +301,6 @@
 					// evaluate if the content changed
 					if(checkOffset != offset){
 						
-						alert(has_scrollbar);
 						
 						if(has_scrollbar==false){
 							createStructure();
@@ -322,7 +321,7 @@
 					}
 					
 					
-				}, 5000);
+				}, 250);
 				
 			}
 			
