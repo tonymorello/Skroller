@@ -103,7 +103,7 @@ Here is a working **[DEMO](http://www.morellowebdesign.com/samples/skroller/)**
 A note...
 ---------
 
-Skroller is still a work-in-progress so there might be bugs, compatibility issues and it might pose a treath to your pets... I mainly developed it for personal use on my projects but I like sharing (because it's caring) and I will try and keep it updated... feel free to fork it of course and report any issues you may find.
+Skroller is still a work-in-progress so there might be bugs, compatibility issues and it might pose a threat to your pets... I mainly developed it for personal use on my projects but I like sharing (because it's caring) and I will try and keep it updated... feel free to fork it of course and report any issues you may find.
 
 Also forgive me if my code is not clean / canonical / rational / standardized etc... (you get the point) I am a web designer, self-taught web developer who likes to hack code, so you've been warned! :)
 
