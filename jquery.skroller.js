@@ -55,6 +55,8 @@
 				targetH = $(element).height();
 				targetW = $(element).width();
 				
+				has_scrollbar = false;
+				
 				// convert delay to milliseconds
 				var delay = barHideDelay*1000;
 				
@@ -169,7 +171,7 @@
 			
 			// 3. RAIL
 			function buildRail(){
-				var has_scrollbar = true;
+				has_scrollbar = true;
 				// attach rail to frame
 				frame.append('<div class="sk_rail"></div>');
 				// set shortcut handle to rail
@@ -299,7 +301,9 @@
 					// evaluate if the content changed
 					if(checkOffset != offset){
 						
-						if(!has_scrollbar){
+						alert(has_scrollbar);
+						
+						if(has_scrollbar==false){
 							createStructure();
 						}
 						
@@ -318,7 +322,7 @@
 					}
 					
 					
-				}, 500);
+				}, 5000);
 				
 			}
 			
