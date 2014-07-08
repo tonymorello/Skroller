@@ -1,0 +1,35 @@
+{
+    "name": "skroller",
+    "title": "jQuery Skroller",
+    "description": "jQuery plugin to transform any elements into a scrollable one.",
+    "keywords": [
+        "scroll",
+        "scroller",
+        "scrollable"
+    ],
+    "version": "1.0.3",
+    "author": {
+        "name": "Tony Morello",
+        "url": "https://github.com/tonymorello"
+    },
+    "maintainers": [
+        {
+            "name": "Tony Morello",
+            "email": "tony@morellowebdesign.com",
+            "url": "http://www.morellowebdesign.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "bugs": "https://github.com/tonymorello/Skroller/issues",
+    "homepage": "https://github.com/tonymorello/Skroller",
+    "docs": "https://github.com/tonymorello/Skroller",
+    "download": "https://github.com/tonymorello/Skroller/releases",
+    "dependencies": {
+        "jquery": ">=1.5"
+    }
+}
