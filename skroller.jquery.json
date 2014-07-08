@@ -27,7 +27,7 @@
     ],
     "bugs": "https://github.com/tonymorello/Skroller/issues",
     "homepage": "https://github.com/tonymorello/Skroller",
-    "docs": "https://github.com/tonymorello/Skroller",
+    "demo": "http://www.morellowebdesign.com/samples/skroller/",
     "download": "https://github.com/tonymorello/Skroller/releases",
     "dependencies": {
         "jquery": ">=1.5"
