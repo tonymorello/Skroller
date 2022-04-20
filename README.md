@@ -31,26 +31,26 @@ Now some eye candy!
 
 Skroller has a few options that can be passed when the method is called here is a list with their defaults
 
-Option | Default | Description
---- | --- | --- | ---
-height | 200 | _Defines the fixed height of the rendered scrollable element in pixels_
-maxHeight | false | _If set to a number will wrap the scrollable element around the target and expand untill the height in pixel is reached then start scrolling_
-barWidth | 10 | _The scrollbar width in pixel_
-barColor | #2C96DE | _The color of the scrollbar_
-barOpacity | 1 | _The bar opacity from 0 to 1_
-barMinHeight | 20 | _The minimum height of the scrollbar_
-barMaxHeight | `=height` | _The maximum height of the scrollbar_
-barHide | false | _Setting this to `true` will hide the bar and show it when the mouse is over the scrollable element_
-barHideDelay | 0.5 | _Value in seconds before the scrollbar fades away when the mouse leaves the scrollable element_
-railOff | false | _Setting this to `true` will NOT render the rail, just the scrollbar_
-railHide | `=barHide` | _Inherit the value of barHide but can be changed to customize the rail behavior separately_
-railColor | `=barColor` | _Set custom color for the rail_
-railOpacity | `=barOpacity/5` | _Customize the rail opacity from 0 to 1_
-indent | `=barWidth+(barWidth/2)` | _The distance between the content and the scrollbar_
-padding | 0 | _the distance between the content and the frame_
-style | 'smooth' | _Can be 'round', 'smooth', 'square' or a numeric value that defines the roundness of the scrollbar corners_
-frameClass | 'skroller' | _Defines a custom class for the scrollable element to offer more customization options_
-wheelSpeed | 1 | _the number of lines to be scrolled at one time_
+Option | Default | Description  
+--- | --- | --- 
+height | 200 | _Defines the fixed height of the rendered scrollable element in pixels_  
+maxHeight | false | _If set to a number will wrap the scrollable element around the target and expand untill the height in pixel is reached then start scrolling_  
+barWidth | 10 | _The scrollbar width in pixel_  
+barColor | #2C96DE | _The color of the scrollbar_  
+barOpacity | 1 | _The bar opacity from 0 to 1_  
+barMinHeight | 20 | _The minimum height of the scrollbar_  
+barMaxHeight | `=height` | _The maximum height of the scrollbar_  
+barHide | false | _Setting this to `true` will hide the bar and show it when the mouse is over the scrollable element_  
+barHideDelay | 0.5 | _Value in seconds before the scrollbar fades away when the mouse leaves the scrollable element_  
+railOff | false | _Setting this to `true` will NOT render the rail, just the scrollbar_  
+railHide | `=barHide` | _Inherit the value of barHide but can be changed to customize the rail behavior separately_  
+railColor | `=barColor` | _Set custom color for the rail_  
+railOpacity | `=barOpacity/5` | _Customize the rail opacity from 0 to 1_  
+indent | `=barWidth+(barWidth/2)` | _The distance between the content and the scrollbar_  
+padding | 0 | _the distance between the content and the frame_  
+style | 'smooth' | _Can be 'round', 'smooth', 'square' or a numeric value that defines the roundness of the scrollbar corners_  
+frameClass | 'skroller' | _Defines a custom class for the scrollable element to offer more customization options_  
+wheelSpeed | 1 | _the number of lines to be scrolled at one time_  
 
 Here is how it looks...
 
